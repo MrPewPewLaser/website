@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+@import url("https://use.typekit.net/wwa7bdp.css");
+
+.main {
+    height: 100vh;
+}
+
+.bgImage {
+    height: 100vh;
+    &::before {
+        /* The image used */
+        background-image: url("./Images/MrPewPewLaser@2x.png");
+        content: "";
+        position: fixed;
+        background-attachment: scroll;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        filter: blur(4px);
+        margin: -10px; /* this will do the trick */
+    }
+}
+
+.title {
+    flex-grow: 1;
+}
