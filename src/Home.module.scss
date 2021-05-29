@@ -2,7 +2,9 @@
 @import url("https://use.typekit.net/wwa7bdp.css");
 
 .main {
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     position: fixed;
     left: 0;
     right: 0;
@@ -31,9 +33,8 @@
 
     .content {
         padding-top: 64px;
+        flex: 1;
     }
-
-    
 }
 
 .bgImage {

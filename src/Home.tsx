@@ -17,11 +17,12 @@ import Dialog from '@material-ui/core/Dialog';
 // Theme
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { themeOptions } from './Theme/Theme';
-import Emoji from './Emoji';
+import Emoji from './Components/Emoji';
 import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import Joke from './Components/Joke';
+import Footer from './Components/Footer';
 
 const theme = createMuiTheme(themeOptions);
-
 
 export default class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -51,10 +52,14 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
                   Welcome.
               </Typography>
               <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
-                  (nothing to see here yet)
+                  (nothing to see here yet, have a joke instead)
               </Typography>
+              <Joke theme={theme} />
             </div>
           </div>
+
+          {/* <Footer theme={theme} /> */}
+
           <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>
             <DialogTitle>Website Info</DialogTitle>
             <DialogContent>
