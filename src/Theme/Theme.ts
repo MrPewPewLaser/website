@@ -16,8 +16,5 @@ export const themeOptions: ThemeOptions = {
     error: {
       main: '#f32514',
     },
-  },
-  typography: {
-    fontFamily: "shabby-chic",
   }
 };

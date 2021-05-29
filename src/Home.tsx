@@ -10,12 +10,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import MenuIcon from '@material-ui/icons/Menu';
 import Info from '@material-ui/icons/Info';
+import Dialog from '@material-ui/core/Dialog';
+
 
 // Theme
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { themeOptions } from './Theme/Theme';
+import Emoji from './Emoji';
+import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 const theme = createMuiTheme(themeOptions);
 
@@ -24,33 +27,56 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
     super(props);
     this.state = {
-
+      showInfoDialog: false,
     }
   }
 
   public render() {
     return (      
       <ThemeProvider theme={theme}>
-        <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
-        <Box bgcolor={theme.palette.background.default}>
+        <Box className={styles.main}>
           <AppBar color={"inherit"} >
             <Toolbar>
-              {/* <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton> */}
-              <Typography variant="h4" color={"textPrimary"} className={styles.title}>
+              <Typography variant={"h4"} color={"textPrimary"} className={styles.title}>
                 MrPewPewLaser
               </Typography>
-              <IconButton>
+              <IconButton onClick={this.onInfoBtnClick}>
                 <Info />
               </IconButton>
             </Toolbar>
           </AppBar>
+          <div className={styles.content}>
+            <div className={styles.welcomeContainer}>
+              <Typography variant={"h1"} color={"textPrimary"} className={styles.welcome}>
+                  Welcome.
+              </Typography>
+              <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
+                  (nothing to see here yet)
+              </Typography>
+            </div>
+          </div>
+          <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>
+            <DialogTitle>Website Info</DialogTitle>
+            <DialogContent>
+              <Typography variant={"body1"}>
+                This website was made with <Emoji label={"heart"} symbol={"❤️"} /> by MrPewPewLaser.
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.onCloseBtnClick}>Close</Button>
+            </DialogActions>
+          </Dialog>
         </Box>
-        <div>
-          
-        </div>
+        <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
       </ThemeProvider>
     );
+  }
+  
+  private onInfoBtnClick = () => {
+    this.setState({ showInfoDialog: true });
+  }
+
+  private onCloseBtnClick = () => {
+    this.setState({ showInfoDialog: false });
   }
 }
