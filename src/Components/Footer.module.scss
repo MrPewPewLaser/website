@@ -1,6 +1,23 @@
 .footerContainer {
+    display: flex;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 20px
+    border-radius: 4px;
+
+    .gridContainer {
+        padding: 20px;
+    }
+
+    .socialsTitle {
+        width: 100%;
+        text-align: center;
+    }
+
+    .link {
+        .linkIcon {
+            margin-right: 10px;
+        }
+    }
 }

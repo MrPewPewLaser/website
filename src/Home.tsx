@@ -54,11 +54,12 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
               <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
                   (nothing to see here yet, have a joke instead)
               </Typography>
-              <Joke theme={theme} />
             </div>
+            <Joke theme={theme} />
+
           </div>
 
-          {/* <Footer theme={theme} /> */}
+          <Footer theme={theme} />
 
           <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>
             <DialogTitle>Website Info</DialogTitle>
