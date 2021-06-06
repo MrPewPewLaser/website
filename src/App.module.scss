@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
 @import url("https://use.typekit.net/wwa7bdp.css");
 
-.main {
+body {
+    background-color: #131416;
+}
+
+.pageContainer {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 2;
+}
+
+.main {
+    flex: 1;
     margin-left: 20px;
     margin-right: 20px;
 
@@ -31,16 +35,14 @@
         flex-direction: column;
     }
 
-    .content {
-        padding-top: 64px;
-        flex: 1;
-    }
+    /* .content {
+        flex-grow: 1;
+    } */
 }
 
 .bgImage {
-    height: 100vh;
+    z-index: -1;
     &::before {
-        /* The image used */
         background-image: url("./Images/MrPewPewLaser@2x.png");
         content: "";
         position: fixed;
@@ -53,7 +55,7 @@
         right: 0;
         bottom: 0;
         filter: blur(4px);
-        margin: -10px; /* this will do the trick */
+        margin: -10px;
     }
 }
 
