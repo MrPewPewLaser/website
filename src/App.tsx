@@ -18,15 +18,19 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Info from '@material-ui/icons/Info';
 import Dialog from '@material-ui/core/Dialog';
-
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 // Theme
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { themeOptions } from './Theme/Theme';
 import Emoji from './Components/Emoji';
-import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core/';
 import Joke from './Components/Joke';
 import Footer from './Components/Footer';
+import Legal from './Components/Legal';
+import Disclaimer from './Components/Disclaimer';
+import Terms from './Components/Terms';
+import Paper from '@material-ui/core/Paper/Paper';
 
 const theme = createMuiTheme(themeOptions);
 
@@ -47,37 +51,44 @@ export default class App extends React.Component<IAppProps, IAppState> {
               <AppBar color={"inherit"}>
                 <Toolbar>
                   <Typography variant={"h4"} color={"textPrimary"} className={styles.title}>
-                    MrPewPewLaser
+                    <Link to={"/"} className={styles.toolbarLogoLink}> 
+                      MrPewPewLaser
+                    </Link>
                   </Typography>
                   <IconButton onClick={this.onInfoBtnClick}>
                     <Info />
                   </IconButton>
                 </Toolbar>
               </AppBar>
-
               <Switch>
                 <Route exact path={"/"}>
-                  <div className={styles.content}>
-                    <div className={styles.welcomeContainer}>
-                      <Typography variant={"h1"} color={"textPrimary"} className={styles.welcome}>
-                          Welcome.
-                      </Typography>
-                      <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
-                          (nothing to see here yet, have a joke instead)
-                      </Typography>
-                    </div>
-                    <Joke theme={theme} />
+                  <div className={styles.welcomeContainer}>
+                    <Typography variant={"h1"} color={"textPrimary"} className={styles.welcome}>
+                        Welcome.
+                    </Typography>
+                    <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
+                        (nothing to see here yet, have a joke instead)
+                    </Typography>
                   </div>
+                  <Joke theme={theme} />
                 </Route>
-                <Route path={"/legal"}>
-                  <Link to={"/legal/terms"}><Typography variant={"subtitle2"} color={"textPrimary"}>Terms & Conditions</Typography></Link>
-                  <Link to={"/legal/terms"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
+                <Route exact path={"/legal"}>
+                  <Paper variant={"elevation"} style={{ padding: "20px", margin: "20px" }}>
+                    <Link to={"/"}>
+                        <Button>
+                            <ArrowBack />
+                            <Typography variant={"button"} color={"textPrimary"} style={{ marginLeft: "10px" }}>Back</Typography>
+                        </Button>
+                    </Link>
+                    <Link to={"/legal/terms"}><Typography variant={"subtitle2"} color={"textPrimary"}>Terms & Conditions</Typography></Link>
+                    <Link to={"/legal/disclaimer"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
+                  </Paper>
                 </Route>
                 <Route path={"/legal/terms"}>
-
+                  <Legal legalContent={<Terms />} />
                 </Route>
                 <Route path={"/legal/disclaimer"}>
-
+                  <Legal legalContent={<Disclaimer />} />
                 </Route>
               </Switch>
               <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>

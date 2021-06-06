@@ -28,7 +28,7 @@ export default class Copyright extends React.Component<ICopyrightProps, ICopyrig
                         Copyright © 2021 MrPewPewLaser All Rights Reserved
                 </Typography>
                 <Link to={"/legal/terms"}><Typography variant={"subtitle2"} color={"textPrimary"}>Terms & Conditions</Typography></Link>
-                <Link to={"/legal/terms"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
+                <Link to={"/legal/disclaimer"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
             </div>
         );
     }
