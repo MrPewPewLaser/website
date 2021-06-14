@@ -10,9 +10,9 @@ export default class Joke extends React.Component<IJokeProps, IJokeState> {
         this.state = {
             joke: {
                 id: 0,
-                type: "Loading hilarious joke...",
+                type: "",
                 punchline: "",
-                setup: ""
+                setup: "Loading hilarious joke..."
             },
         };
     }
@@ -23,7 +23,10 @@ export default class Joke extends React.Component<IJokeProps, IJokeState> {
 
     public render() {
         return (
-            <div className={styles.container} style={{ color: this.props.theme.palette.text.primary }}>
+            <div className={styles.container} style={{ 
+                color: this.props.theme.palette.text.primary, 
+                backgroundColor: this.props.theme.palette.background.paper 
+            }}>
                 <div className={styles.setup}>{this.state.joke.setup}</div>
                 <div className={styles.punchline}>{this.state.joke.punchline}</div>
             </div>

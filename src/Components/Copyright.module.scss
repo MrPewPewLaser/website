@@ -1,11 +1,43 @@
 .copyright {
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 650px) {
+        flex-direction: column;
+    }
+
+    @media screen and (min-width: 651px) {
+        flex-direction: row;
+    }
 
     & > * {
         &:not(:first-child) {
             margin-left: 10px;
+        }
+    }
+
+    .link {
+        display: flex;
+
+        &:hover > * {
+            color: darken(white, 70%) !important;
+        }
+
+        &:link {
+            text-decoration: none;
+        }
+
+        &:visited {
+            text-decoration: none;
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:active {
+            text-decoration: none;
         }
     }
 }

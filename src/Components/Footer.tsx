@@ -39,19 +39,19 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
                         </Typography>
                     </Grid> */}
                     <Grid container item xs={12}>
-                        <Grid item xs={4} style={this.paperStyles}>
+                        <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             <Button href={"https://www.twitch.tv/mrpewpewlaser"} target={"_blank"} className={styles.link}>
                                 <FontAwesomeIcon icon={faTwitch} className={styles.linkIcon} />
                                 MrPewPewLaser
                             </Button>
                         </Grid>
-                        <Grid item xs={4} style={this.paperStyles}>
+                        <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             <Button href={"https://steamcommunity.com/id/mrpewpewlaser/"} target={"_blank"} className={styles.link}>
                                 <FontAwesomeIcon icon={faSteam} className={styles.linkIcon} />
                                 pew
                             </Button>
                         </Grid>
-                        <Grid item xs={4} style={this.paperStyles}>
+                        <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             <Typography>Also check out</Typography>
                             <Button href={"https://www.twitch.tv/juliestrator"} target={"_blank"} className={styles.link}>
                                 <FontAwesomeIcon icon={faTwitch} className={styles.linkIcon} />
@@ -60,7 +60,8 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
                         </Grid>
                     </Grid>
                 </Grid>
-                <Copyright />
+                <hr className={styles.divider} style={{ background: this.props.theme.palette.secondary.main, backgroundImage: `linear-gradient(to right, ${this.props.theme.palette.primary.main}, ${this.props.theme.palette.secondary.main}, ${this.props.theme.palette.primary.main})`}} />
+                <Copyright theme={this.props.theme} />
             </Box>
         );
     }

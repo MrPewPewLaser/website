@@ -2,11 +2,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     padding-bottom: 20px;
 
     .gridContainer {
         padding: 20px;
+        max-width: 1200px;
     }
 
     .socialsTitle {
@@ -18,5 +20,13 @@
         .linkIcon {
             margin-right: 10px;
         }
+    }
+
+    .divider {
+        display: flex; 
+        margin-bottom: 20px;
+        width: 100%;
+        border: 0;
+        height: 1px;
     }
 }

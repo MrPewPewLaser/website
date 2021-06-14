@@ -69,8 +69,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
                     <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
                         (nothing to see here yet, have a joke instead)
                     </Typography>
+                    <Joke theme={theme} />
                   </div>
-                  <Joke theme={theme} />
                 </Route>
                 <Route exact path={"/legal"}>
                   <Paper variant={"elevation"} style={{ padding: "20px", margin: "20px" }}>
