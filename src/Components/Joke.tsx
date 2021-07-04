@@ -43,8 +43,6 @@ export default class Joke extends React.Component<IJokeProps, IJokeState> {
                 resolve(joke);
             })
             .catch(error => {
-                console.log(error);
-                
                 resolve({
                     id: 0,
                     setup: "Oh no! I couldn't find a good joke. :(",

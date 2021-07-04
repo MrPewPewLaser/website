@@ -6,8 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import { Button, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitch, faSteam } from '@fortawesome/free-brands-svg-icons'
+import { faSteam } from '@fortawesome/free-brands-svg-icons'
 import Copyright from "../Components/Copyright";
+import { ITwitchUser } from "../Interfaces/TwitchUser";
+import { find } from 'lodash';
+import TwitchButton from "./TwitchButton";
 
 
 export default class Footer extends React.Component<IFooterProps, IFooterState> {
@@ -30,6 +33,18 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
     }
 
     public render() {
+        console.log(this.props.twitchUsers);
+        
+        let mrpewpewlaser: ITwitchUser | undefined;
+        let juliestrator: ITwitchUser | undefined;
+        let passivestar: ITwitchUser | undefined;
+
+        if (this.props.twitchUsers.length > 0) {
+            mrpewpewlaser = find(this.props.twitchUsers, user => user.user.name === "mrpewpewlaser");
+            juliestrator = find(this.props.twitchUsers, user => user.user.name === "juliestrator");
+            passivestar = find(this.props.twitchUsers, user => user.user.name === "passivestar");
+        }
+
         return (
             <Box className={styles.footerContainer} bgcolor={this.props.theme.palette.background.paper}>
                 <Grid container className={styles.gridContainer}>
@@ -40,10 +55,9 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
                     </Grid> */}
                     <Grid container item xs={12}>
                         <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
-                            <Button href={"https://www.twitch.tv/mrpewpewlaser"} target={"_blank"} className={styles.link}>
-                                <FontAwesomeIcon icon={faTwitch} className={styles.linkIcon} />
-                                MrPewPewLaser
-                            </Button>
+                            {mrpewpewlaser != null &&
+                                <TwitchButton twitchUser={mrpewpewlaser} />
+                            }
                         </Grid>
                         <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             <Button href={"https://steamcommunity.com/id/mrpewpewlaser/"} target={"_blank"} className={styles.link}>
@@ -53,10 +67,12 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
                         </Grid>
                         <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             <Typography>Also check out</Typography>
-                            <Button href={"https://www.twitch.tv/juliestrator"} target={"_blank"} className={styles.link}>
-                                <FontAwesomeIcon icon={faTwitch} className={styles.linkIcon} />
-                                Juliestrator
-                            </Button>
+                            {juliestrator != null &&
+                                <TwitchButton twitchUser={juliestrator} />
+                            }
+                            {passivestar != null &&
+                                <TwitchButton twitchUser={passivestar} />
+                            }
                         </Grid>
                     </Grid>
                 </Grid>

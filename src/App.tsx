@@ -31,15 +31,27 @@ import Legal from './Components/Legal';
 import Disclaimer from './Components/Disclaimer';
 import Terms from './Components/Terms';
 import Paper from '@material-ui/core/Paper/Paper';
+import { Service } from './Service';
+import { ApiClient } from 'twitch/lib';
+import { ITwitchUser } from './Interfaces/TwitchUser';
 
 const theme = createMuiTheme(themeOptions);
 
 export default class App extends React.Component<IAppProps, IAppState> {
+  private readonly twitchUserNames: string[] = [];
+
   constructor(props: IAppProps) {
     super(props);
     this.state = {
       showInfoDialog: false,
+      twitchUsers: [],
     }
+
+    this.twitchUserNames = [
+      "MrPewPewLaser",
+      "Juliestrator",
+      "passivestar"
+    ]
   }
 
   public render() {
@@ -103,12 +115,33 @@ export default class App extends React.Component<IAppProps, IAppState> {
                 </DialogActions>
               </Dialog>
             </Box>
-            <Footer theme={theme} />
+            <Footer theme={theme} twitchUsers={this.state.twitchUsers} />
           </ThemeProvider>
           <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
         </Box>
       </Router>
     );
+  }
+
+  public async componentDidMount() {  
+    const apiClient: ApiClient = await Service.GetTwitchAPIClient();
+
+    if (apiClient != null)
+      this.getTwitchUsers(apiClient);
+
+    // const stream = await user.getStream();
+  }
+
+  private getTwitchUsers = async (apiClient: ApiClient) => {
+    let twitchUsers: ITwitchUser[] = [];
+    for (let index = 0; index < this.twitchUserNames.length; index++) {
+      let user = await Service.GetUserByName(apiClient, this.twitchUserNames[index]);
+      let stream = await user.getStream();
+
+      twitchUsers.push({ user, stream })
+    }
+
+    this.setState({ twitchUsers });
   }
   
   private onInfoBtnClick = () => {
