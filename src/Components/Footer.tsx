@@ -2,15 +2,15 @@ import React from "react";
 import { IFooterProps } from "../Interfaces/IFooterProps";
 import { IFooterState } from "../Interfaces/IFooterState";
 import styles from './Footer.module.scss';
-import Grid from "@material-ui/core/Grid";
+/* import Grid from "@material-ui/core/Grid"; */
 import Box from "@material-ui/core/Box";
-import { Button, Typography } from "@material-ui/core";
+/* import { Button, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSteam } from '@fortawesome/free-brands-svg-icons'
+import { faSteam } from '@fortawesome/free-brands-svg-icons' */
 import Copyright from "../Components/Copyright";
-import { ITwitchUser } from "../Interfaces/TwitchUser";
+/* import { ITwitchUser } from "../Interfaces/TwitchUser";
 import { find } from 'lodash';
-import TwitchButton from "./TwitchButton";
+import TwitchButton from "./TwitchButton"; */
 
 
 export default class Footer extends React.Component<IFooterProps, IFooterState> {
@@ -33,9 +33,7 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
     }
 
     public render() {
-        console.log(this.props.twitchUsers);
-        
-        let mrpewpewlaser: ITwitchUser | undefined;
+        /* let mrpewpewlaser: ITwitchUser | undefined;
         let juliestrator: ITwitchUser | undefined;
         let passivestar: ITwitchUser | undefined;
 
@@ -43,16 +41,11 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
             mrpewpewlaser = find(this.props.twitchUsers, user => user.user.name === "mrpewpewlaser");
             juliestrator = find(this.props.twitchUsers, user => user.user.name === "juliestrator");
             passivestar = find(this.props.twitchUsers, user => user.user.name === "passivestar");
-        }
+        } */
 
         return (
             <Box className={styles.footerContainer} bgcolor={this.props.theme.palette.background.paper}>
-                <Grid container className={styles.gridContainer}>
-                    {/* <Grid container item>
-                        <Typography variant={"h6"} className={styles.socialsTitle} color={"textSecondary"}>
-                            Socials & Friends
-                        </Typography>
-                    </Grid> */}
+                {/* <Grid container className={styles.gridContainer}>
                     <Grid container item xs={12}>
                         <Grid item xs={12} xl={4} sm={4} md={4} style={this.paperStyles}>
                             {mrpewpewlaser != null &&
@@ -75,7 +68,7 @@ export default class Footer extends React.Component<IFooterProps, IFooterState> 
                             }
                         </Grid>
                     </Grid>
-                </Grid>
+                </Grid> */}
                 <hr className={styles.divider} style={{ background: this.props.theme.palette.secondary.main, backgroundImage: `linear-gradient(to right, ${this.props.theme.palette.primary.main}, ${this.props.theme.palette.secondary.main}, ${this.props.theme.palette.primary.main})`}} />
                 <Copyright theme={this.props.theme} />
             </Box>

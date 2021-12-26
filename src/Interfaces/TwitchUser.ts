@@ -1,6 +1,6 @@
-import { HelixStream, HelixUser } from "twitch/lib";
+// import { HelixStream, HelixUser } from "twitch/lib";
 
 export interface ITwitchUser {
-    user: HelixUser;
-    stream: HelixStream | null;
+    // user: HelixUser;
+    // stream: HelixStream | null;
 }

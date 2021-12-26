@@ -31,7 +31,7 @@ export default class TwitchButton extends React.Component<ITwitchButtonProps, IT
             display: inline - block;
         } */
 
-        return (
+        /* return (
             <Button href={`https://www.twitch.tv/${this.props.twitchUser.user.name}`} target={"_blank"}>
                 <FontAwesomeIcon icon={faTwitch} style={{ marginRight: "10px" }} />
                 {this.props.twitchUser.user.displayName}
@@ -40,6 +40,8 @@ export default class TwitchButton extends React.Component<ITwitchButtonProps, IT
                     </div>
                 }
             </Button>
-        );
+        ); */
+
+        return (<div></div>);
     }
 }

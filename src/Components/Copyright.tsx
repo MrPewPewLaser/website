@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Copyright.module.scss';
 import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom';
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles/createTheme";
 
 export interface ICopyrightProps {
     theme: Theme;

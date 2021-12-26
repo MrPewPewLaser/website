@@ -3,5 +3,5 @@ import { ITwitchUser } from "./TwitchUser";
 
 export interface IFooterProps {
     theme: Theme;
-    twitchUsers: ITwitchUser[];
+    // twitchUsers: ITwitchUser[];
 }
