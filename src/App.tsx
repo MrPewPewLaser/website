@@ -31,6 +31,7 @@ import Legal from './Components/Legal';
 import Disclaimer from './Components/Disclaimer';
 import Terms from './Components/Terms';
 import Paper from '@material-ui/core/Paper/Paper';
+import TuiView from './TuiView';
 
 // import { Service } from './Service';
 
@@ -55,70 +56,70 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
   public render() {
     return (
-            <BrowserRouter>
-              <Routes>
-                <Route path={"/"}>
-                  <Box className={styles.pageContainer}>
-                    <ThemeProvider theme={theme}>
-                      <Box className={styles.main}>
-                        <AppBar color={"inherit"}>
-                          <Toolbar>
-                            <Typography variant={"h4"} color={"textPrimary"} className={styles.title}>
-                              <Link to={"/"} className={styles.toolbarLogoLink}>
-                                MrPewPewLaser
-                              </Link>
-                            </Typography>
-                            <IconButton onClick={this.onInfoBtnClick}>
-                              <Info />
-                            </IconButton>
-                          </Toolbar>
-                        </AppBar>
-                        <div className={styles.welcomeContainer}>
-                          <Typography variant={"h1"} color={"textPrimary"} className={styles.welcome}>
-                            Welcome.
-                          </Typography>
-                          <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
-                            (nothing to see here yet, have a joke instead)
-                          </Typography>
-                          <Joke theme={theme} />
-                        </div>
-                        <Route path={"/legal/*"}>
-                          {/* <Paper variant={"elevation"} style={{ padding: "20px", margin: "20px" }}>
-                            <Link to={"/"}>
-                                <Button>
-                                    <ArrowBack />
-                                    <Typography variant={"button"} color={"textPrimary"} style={{ marginLeft: "10px" }}>Back</Typography>
-                                </Button>
-                            </Link>
-                            <Link to={"/legal/terms/*"}><Typography variant={"subtitle2"} color={"textPrimary"}>Terms & Conditions</Typography></Link>
-                            <Link to={"/legal/disclaimer/*"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
-                          </Paper> */}
-                        </Route>
-                        <Route path={"/legal/terms/*"}>
-                          <Legal legalContent={<Terms />} />
-                        </Route>
-                        <Route path={"/legal/disclaimer/*"}>
-                          <Legal legalContent={<Disclaimer />} />
-                        </Route>
-                        <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>
-                          <DialogTitle>Info</DialogTitle>
-                          <DialogContent>
-                            <Typography variant={"body1"}>
-                              This website was made with <Emoji label={"heart"} symbol={"❤️"} /> by MrPewPewLaser.
-                            </Typography>
-                          </DialogContent>
-                          <DialogActions>
-                            <Button onClick={this.onCloseBtnClick}>Close</Button>
-                          </DialogActions>
-                       </Dialog>
-                      </Box>
-                      <Footer theme={theme} /* twitchUsers={this.state.twitchUsers} */ />
-                    </ThemeProvider>
-                    <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
-                  </Box>
-                </Route>
-              </Routes>
-            </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <Box className={styles.pageContainer}>
+              <ThemeProvider theme={theme}>
+                <Box className={styles.main}>
+                  <AppBar color={"inherit"}>
+                    <Toolbar>
+                      <Typography variant={"h4"} color={"textPrimary"} className={styles.title}>
+                        <Link to={"/"} className={styles.toolbarLogoLink}>
+                          MrPewPewLaser
+                        </Link>
+                      </Typography>
+                      <IconButton onClick={this.onInfoBtnClick}>
+                        <Info />
+                      </IconButton>
+                    </Toolbar>
+                  </AppBar>
+                  <div className={styles.welcomeContainer}>
+                    <Typography variant={"h1"} color={"textPrimary"} className={styles.welcome}>
+                      Welcome.
+                    </Typography>
+                    <Typography variant={"subtitle1"} color={"textPrimary"} className={styles.welcome}>
+                      (nothing to see here yet, have a joke instead)
+                    </Typography>
+                    <Joke theme={theme} />
+                  </div>
+                  <Routes>
+                    <Route path={"legal/*"} element={
+                      <Paper variant={"elevation"} style={{ padding: "20px", margin: "20px" }}>
+                        <Link to={"/"}>
+                          <Button>
+                            <ArrowBack />
+                            <Typography variant={"button"} color={"textPrimary"} style={{ marginLeft: "10px" }}>Back</Typography>
+                          </Button>
+                        </Link>
+                        <Link to={"/legal/terms/*"}><Typography variant={"subtitle2"} color={"textPrimary"}>Terms & Conditions</Typography></Link>
+                        <Link to={"/legal/disclaimer/*"}><Typography variant={"subtitle2"} color={"textPrimary"}>Disclaimer</Typography></Link>
+                      </Paper>
+                    }>
+                    </Route>
+                    <Route path={"legal/terms/*"} element={<Legal legalContent={<Terms />} />} />
+                    <Route path={"legal/disclaimer/*"} element={<Legal legalContent={<Disclaimer />} />} />
+                  </Routes>
+                  <Dialog open={this.state.showInfoDialog} onClose={this.onInfoBtnClick}>
+                    <DialogTitle>Info</DialogTitle>
+                    <DialogContent>
+                      <Typography variant={"body1"}>
+                        This website was made with <Emoji label={"heart"} symbol={"❤️"} /> by MrPewPewLaser.
+                      </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={this.onCloseBtnClick}>Close</Button>
+                    </DialogActions>
+                  </Dialog>
+                </Box>
+                <Footer theme={theme} /* twitchUsers={this.state.twitchUsers} */ />
+              </ThemeProvider>
+              <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
+            </Box>
+          } />
+          <Route path="/tui" element={<TuiView />} />
+        </Routes>
+      </BrowserRouter>      
     );
   }
 
