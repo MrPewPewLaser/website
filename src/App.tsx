@@ -19,6 +19,7 @@ import Box from '@material-ui/core/Box';
 import Info from '@material-ui/icons/Info';
 import Dialog from '@material-ui/core/Dialog';
 import ArrowBack from '@material-ui/icons/ArrowBack';
+import XP from './XP';
 
 // Theme
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -31,7 +32,7 @@ import Legal from './Components/Legal';
 import Disclaimer from './Components/Disclaimer';
 import Terms from './Components/Terms';
 import Paper from '@material-ui/core/Paper/Paper';
-import TuiView from './TuiView';
+
 
 // import { Service } from './Service';
 
@@ -117,13 +118,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
               <Box bgcolor={theme.palette.background.default} className={styles.bgImage} />
             </Box>
           } />
-          <Route path="/tui" element={<TuiView />} />
+          <Route path="/xp" element={<XP />} />
         </Routes>
       </BrowserRouter>      
     );
   }
 
   public async componentDidMount() {
+
+
     // const apiClient: ApiClient = await Service.GetTwitchAPIClient();
 
     //if (apiClient != null)
